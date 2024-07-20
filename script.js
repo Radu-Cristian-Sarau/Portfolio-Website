@@ -9,6 +9,8 @@ const phone = document.getElementById('phone');
 const subject = document.getElementById('subject');
 const message = document.getElementById('message');
 
+let empty = 0;
+
 window.onscroll = () => {
     sections.forEach(sec => {
         let top = window.scrollY;
@@ -41,7 +43,7 @@ function sendEmail() {
         Body: bodyMessage
     }).then(
         message => {
-            if (message == "OK") {
+            if (message == "OK" && empty == 0) {
                 Swal.fire({
                     title: "Email Sent!",
                     text: "Thank you for contacting me!",
@@ -55,13 +57,17 @@ function sendEmail() {
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     sendEmail();
+    console.log("Email sent!");
 });
 
 function checkInputs() {
     const items = document.querySelectorAll('.item');
     for (const item of items) {
         if (item.value == "") {
-            window.alert("Please fill in all fields!");
+            empty++;
         }
+    }
+    if (empty > 0) {
+        window.alert("Please fill in all the fields!");
     }
 }
