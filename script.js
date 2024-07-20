@@ -3,6 +3,7 @@ const navbar = document.querySelector('.navbar');
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('header nav a');
 const form = document.querySelector('form');
+const { token } = require('./config.json');
 
 window.onscroll = () => {
     sections.forEach(sec => {
@@ -29,9 +30,9 @@ function sendEmail() {
     sendEmail.send({
         Host: "smtp.elasticemail.com",
         Username: "radusarau21@gmail.com",
-        Password: "77E0979AC78BB3751E7D286A37E0672D1047",
-        To: 'them@website.com',
-        From: "you@isp.com",
+        Password: token,
+        To: 'radusarau21@gmail.com',
+        From: "radusarau21@gmail.com",
         Subject: "This is the subject",
         Body: "And this is the body"
     }).then(
