@@ -2,8 +2,12 @@ const menuIcon = document.querySelector('#menu-icon');
 const navbar = document.querySelector('.navbar');
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('header nav a');
-const form = document.querySelector('form');
-const { token } = require('./config.json');
+const form = document.querySelector("form");
+const fullName = document.getElementById('name');
+const email = document.getElementById('email');
+const phone = document.getElementById('phone');
+const subject = document.getElementById('subject');
+const message = document.getElementById('message');
 
 window.onscroll = () => {
     sections.forEach(sec => {
@@ -27,15 +31,37 @@ menuIcon.onclick = () => {
 }
 
 function sendEmail() {
-    sendEmail.send({
-        Host: "smtp.elasticemail.com",
-        Username: "radusarau21@gmail.com",
-        Password: token,
+    const bodyMessage = `Full Name: ${fullName.value}<br> Email: ${email.value}<br> Phone: ${phone.value}<br> Message: ${message.value}`;
+    checkInputs();
+    Email.send({
+        SecureToken: "ab23bcb2-0f26-4f85-b2bc-af02b6fda77d",
         To: 'radusarau21@gmail.com',
         From: "radusarau21@gmail.com",
-        Subject: "This is the subject",
-        Body: "And this is the body"
+        Subject: subject.value,
+        Body: bodyMessage
     }).then(
-        message => alert(message)
+        message => {
+            if (message == "OK") {
+                Swal.fire({
+                    title: "Email Sent!",
+                    text: "Thank you for contacting me!",
+                    icon: "success"
+                })
+            }
+        }
     );
+}
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    sendEmail();
+});
+
+function checkInputs() {
+    const items = document.querySelectorAll('.item');
+    for (const item of items) {
+        if (item.value == "") {
+            window.alert("Please fill in all fields!");
+        }
+    }
 }
