@@ -65,6 +65,8 @@ function checkInputs() {
     for (const item of items) {
         if (item.value == "") {
             empty++;
+            /* console.log(item);
+            console.log(empty); */
         }
     }
     if (empty > 0) {
