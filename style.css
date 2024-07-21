@@ -15,7 +15,10 @@
     --bg-color: #080808;
     --second-bg-color: #131313;
     --text-color: white;
+    --main-color: #c300ff;
+    /*
     --main-color: #00ffee;
+    */
 }
 
 html {
@@ -56,6 +59,14 @@ body {
 
 .logo span {
     text-shadow: 0 0 25px var(--main-color);
+}
+
+b {
+    color: white;
+}
+
+b:hover {
+    color: var(--main-color);
 }
 
 .navbar a {
@@ -430,6 +441,10 @@ span {
     color: black;
     border: 5px solid var(--main-color);
     transform: scale(1.03);
+}
+
+.projects-box:hover b{
+    color: var(--main-color);
 }
 
 .projects-box .projects-info {
