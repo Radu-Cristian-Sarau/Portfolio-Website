@@ -16,6 +16,7 @@
     --second-bg-color: #131313;
     --text-color: white;
     --main-color: #c300ff;
+    --secondary-color: rgb(167, 0, 167);
     /*
     --main-color: #00ffee;
     */
@@ -398,11 +399,11 @@ span {
 }
 
 ::-webkit-scrollbar {
-    width: 15px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--main-color);
+    background: white;
 }
 
 ::-webkit-scrollbar-track {
@@ -431,7 +432,7 @@ span {
     background: var(--main-color);
     height: 300px;
     border-radius: 3rem;
-    border: 5px solid transparent;
+    border: 5px solid white;
     cursor: pointer;
     transition: 0.4s ease-in-out;
 }
@@ -444,6 +445,14 @@ span {
 }
 
 .projects-box:hover b{
+    color: var(--main-color);
+}
+
+.projects-box:hover h4 {
+    color: var(--main-color)
+}
+
+.projects-box:hover a {
     color: var(--main-color);
 }
 
@@ -461,7 +470,16 @@ span {
     font-size: 3rem;
     font-weight: 800;
     line-height: 2;
-    color: black;
+    color: var(--text-color);
+}
+
+.projects-info a {
+    text-decoration: underline;
+    color: white;
+}
+
+.projects-info a:hover {
+    color: var(--main-color);
 }
 
 .projects-info p {
